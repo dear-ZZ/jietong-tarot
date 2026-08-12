@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#dfe9df" />
+  <title>桔彤塔罗 · 给你的一封信</title>
+  <style>
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;width:100%;height:100%;overflow:hidden}
+    body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#415247;background:#e5eee5}
+    .page{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 35%,#f8fbf6 0,#e9f1e7 42%,#d8e5d9 100%)}
+    .glow{position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.55);filter:blur(50px);animation:pulse 4s ease-in-out infinite}
+    .leaf{position:absolute;opacity:.18;font-size:32px;animation:float 7s ease-in-out infinite}
+    .leaf.l1{top:10%;left:10%}.leaf.l2{top:22%;right:9%;animation-delay:1s}.leaf.l3{bottom:14%;left:13%;animation-delay:2s}.leaf.l4{bottom:22%;right:12%;animation-delay:3s}
+    .content{position:relative;z-index:2;width:min(92vw,430px);text-align:center;display:flex;flex-direction:column;align-items:center}
+    .brand{font-size:14px;letter-spacing:5px;margin-bottom:12px;color:#718276}
+    h1{font-family:Georgia,"Songti SC","STSong",serif;font-weight:400;font-size:27px;letter-spacing:4px;margin:0 0 10px;color:#34443a}
+    .sub{font-size:13px;letter-spacing:2px;color:#8a988d;margin-bottom:42px}
+    .envelope-wrap{position:relative;width:310px;height:245px;cursor:pointer;perspective:1000px;filter:drop-shadow(0 22px 24px rgba(74,96,78,.18))}
+    .envelope{position:absolute;left:0;bottom:20px;width:310px;height:190px;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+    .back{position:absolute;inset:0;background:#f7f3e9;border-radius:5px;box-shadow:0 2px 5px rgba(50,70,55,.12);border:1px solid rgba(105,125,108,.18)}
+    .paper{position:absolute;left:25px;bottom:10px;width:260px;height:160px;background:#fffdf6;border-radius:3px;z-index:2;box-shadow:0 2px 8px rgba(50,70,55,.12);padding:26px 20px;color:#657267;transition:transform .85s cubic-bezier(.2,.85,.2,1),opacity .4s}
+    .paper .seal-text{font-family:Georgia,serif;font-size:18px;letter-spacing:3px;color:#788a7b;margin-bottom:15px}
+    .paper p{font-family:Georgia,"Songti SC",serif;font-size:13px;line-height:2;letter-spacing:1px;margin:0}
+    .front{position:absolute;inset:0;z-index:4;background:#f1eadc;clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);border-radius:4px}
+    .flap{position:absolute;left:0;top:0;width:100%;height:112px;z-index:5;background:#eee5d4;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .85s cubic-bezier(.2,.8,.2,1);backface-visibility:hidden;border-top:1px solid rgba(100,110,90,.08)}
+    .seal{position:absolute;z-index:6;left:50%;top:86px;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#9eaf9f;color:#f9f7ee;font-family:Georgia,serif;font-size:17px;letter-spacing:1px;box-shadow:0 3px 8px rgba(70,85,70,.18);transition:opacity .4s,transform .6s}
+    .hint{margin-top:8px;color:#7b897f;font-size:12px;letter-spacing:2px;transition:opacity .4s}
+    .opened .flap{transform:rotateX(180deg)}
+    .opened .paper{transform:translateY(-112px);z-index:3}
+    .opened .seal{opacity:0;transform:translate(-50%,-50%) scale(.6)}
+    .opened .envelope{transform:translateY(18px)}
+    .opened .hint{opacity:0}
+    .after{opacity:0;transform:translateY(15px);pointer-events:none;margin-top:34px;transition:opacity .7s .5s,transform .7s .5s}
+    .opened .after{opacity:1;transform:none;pointer-events:auto}
+    .after-title{font-family:Georgia,"Songti SC",serif;font-size:18px;letter-spacing:3px;margin-bottom:8px;color:#536257}
+    .after-desc{font-size:12px;color:#89958b;letter-spacing:1px}
+    .button{display:inline-block;margin-top:15px;padding:9px 22px;border:1px solid rgba(101,120,105,.35);border-radius:30px;color:#657468;font-size:12px;letter-spacing:2px;background:rgba(255,255,255,.35)}
+    .footer{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:2px;color:#a0aaa1}
+    @keyframes pulse{0%,100%{transform:scale(.95);opacity:.55}50%{transform:scale(1.08);opacity:.8}}
+    @keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-13px) rotate(8deg)}}
+    @media(max-width:360px){.envelope-wrap,.envelope{width:280px}.paper{width:230px;left:25px}.content{transform:scale(.92)}.sub{margin-bottom:28px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="glow"></div>
+    <div class="leaf l1">❧</div><div class="leaf l2">☘</div><div class="leaf l3">❧</div><div class="leaf l4">☘</div>
+    <section class="content">
+      <div class="brand">桔彤塔罗</div>
+      <h1>给你的一封信</h1>
+      <div class="sub">有些答案 · 值得慢慢打开</div>
+      <div class="envelope-wrap" id="envelope" role="button" aria-label="点击打开信封" tabindex="0">
+        <div class="envelope">
+          <div class="back"></div>
+          <div class="paper"><div class="seal-text">桔彤</div><p>有些事情，<br>不是没有答案。<br>只是你一直不敢面对<br>那个真正的答案。</p></div>
+          <div class="front"></div>
+          <div class="flap"></div>
+          <div class="seal">J·T</div>
+        </div>
+        <div class="hint">点击信封 · 打开属于你的答案</div>
+      </div>
+      <div class="after">
+        <div class="after-title">愿你看见真实的自己</div>
+        <div class="after-desc">塔罗不是替你决定，而是帮你看清。</div>
+        <div class="button" id="again">重新打开</div>
+      </div>
+    </section>
+    <div class="footer">J·T TAROT · FOLLOW YOUR INNER VOICE</div>
+  </main>
+  <script>
+    const wrap=document.getElementById('envelope');
+    const again=document.getElementById('again');
+    function toggle(){wrap.classList.toggle('opened')}
+    wrap.addEventListener('click',toggle);
+    wrap.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
+    again.addEventListener('click',e=>{e.stopPropagation();wrap.classList.remove('opened');window.scrollTo({top:0,behavior:'smooth'})});
+  </script>
+</body>
+</html>
