@@ -1,81 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#dfe9df" />
-  <title>桔彤塔罗 · 给你的一封信</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>给你的一封信</title>
   <style>
-    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{margin:0;width:100%;height:100%;overflow:hidden}
-    body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#415247;background:#e5eee5}
-    .page{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 35%,#f8fbf6 0,#e9f1e7 42%,#d8e5d9 100%)}
-    .glow{position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.55);filter:blur(50px);animation:pulse 4s ease-in-out infinite}
-    .leaf{position:absolute;opacity:.18;font-size:32px;animation:float 7s ease-in-out infinite}
-    .leaf.l1{top:10%;left:10%}.leaf.l2{top:22%;right:9%;animation-delay:1s}.leaf.l3{bottom:14%;left:13%;animation-delay:2s}.leaf.l4{bottom:22%;right:12%;animation-delay:3s}
-    .content{position:relative;z-index:2;width:min(92vw,430px);text-align:center;display:flex;flex-direction:column;align-items:center}
-    .brand{font-size:14px;letter-spacing:5px;margin-bottom:12px;color:#718276}
-    h1{font-family:Georgia,"Songti SC","STSong",serif;font-weight:400;font-size:27px;letter-spacing:4px;margin:0 0 10px;color:#34443a}
-    .sub{font-size:13px;letter-spacing:2px;color:#8a988d;margin-bottom:42px}
-    .envelope-wrap{position:relative;width:310px;height:245px;cursor:pointer;perspective:1000px;filter:drop-shadow(0 22px 24px rgba(74,96,78,.18))}
-    .envelope{position:absolute;left:0;bottom:20px;width:310px;height:190px;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-    .back{position:absolute;inset:0;background:#f7f3e9;border-radius:5px;box-shadow:0 2px 5px rgba(50,70,55,.12);border:1px solid rgba(105,125,108,.18)}
-    .paper{position:absolute;left:25px;bottom:10px;width:260px;height:160px;background:#fffdf6;border-radius:3px;z-index:2;box-shadow:0 2px 8px rgba(50,70,55,.12);padding:26px 20px;color:#657267;transition:transform .85s cubic-bezier(.2,.85,.2,1),opacity .4s}
-    .paper .seal-text{font-family:Georgia,serif;font-size:18px;letter-spacing:3px;color:#788a7b;margin-bottom:15px}
-    .paper p{font-family:Georgia,"Songti SC",serif;font-size:13px;line-height:2;letter-spacing:1px;margin:0}
-    .front{position:absolute;inset:0;z-index:4;background:#f1eadc;clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);border-radius:4px}
-    .flap{position:absolute;left:0;top:0;width:100%;height:112px;z-index:5;background:#eee5d4;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .85s cubic-bezier(.2,.8,.2,1);backface-visibility:hidden;border-top:1px solid rgba(100,110,90,.08)}
-    .seal{position:absolute;z-index:6;left:50%;top:86px;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#9eaf9f;color:#f9f7ee;font-family:Georgia,serif;font-size:17px;letter-spacing:1px;box-shadow:0 3px 8px rgba(70,85,70,.18);transition:opacity .4s,transform .6s}
-    .hint{margin-top:8px;color:#7b897f;font-size:12px;letter-spacing:2px;transition:opacity .4s}
-    .opened .flap{transform:rotateX(180deg)}
-    .opened .paper{transform:translateY(-112px);z-index:3}
-    .opened .seal{opacity:0;transform:translate(-50%,-50%) scale(.6)}
-    .opened .envelope{transform:translateY(18px)}
-    .opened .hint{opacity:0}
-    .after{opacity:0;transform:translateY(15px);pointer-events:none;margin-top:34px;transition:opacity .7s .5s,transform .7s .5s}
-    .opened .after{opacity:1;transform:none;pointer-events:auto}
-    .after-title{font-family:Georgia,"Songti SC",serif;font-size:18px;letter-spacing:3px;margin-bottom:8px;color:#536257}
-    .after-desc{font-size:12px;color:#89958b;letter-spacing:1px}
-    .button{display:inline-block;margin-top:15px;padding:9px 22px;border:1px solid rgba(101,120,105,.35);border-radius:30px;color:#657468;font-size:12px;letter-spacing:2px;background:rgba(255,255,255,.35)}
-    .footer{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:2px;color:#a0aaa1}
-    @keyframes pulse{0%,100%{transform:scale(.95);opacity:.55}50%{transform:scale(1.08);opacity:.8}}
-    @keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-13px) rotate(8deg)}}
-    @media(max-width:360px){.envelope-wrap,.envelope{width:280px}.paper{width:230px;left:25px}.content{transform:scale(.92)}.sub{margin-bottom:28px}}
+    :root {
+      --ink: #352a32;
+      --muted: #bdaeb8;
+      --rose: #b85872;
+      --rose-dark: #7e324f;
+      --paper: #fffaf0;
+      --cream: #eadfce;
+      --wine: #642b46;
+      --gold: #c49a55;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(196,154,85,.16) 0 1px, transparent 2px),
+        radial-gradient(circle at 82% 28%, rgba(255,255,255,.15) 0 1px, transparent 2px),
+        radial-gradient(circle at 72% 78%, rgba(184,88,114,.2), transparent 28%),
+        linear-gradient(145deg, #251822 0%, #412333 48%, #18252a 100%);
+      background-size: 84px 84px, 122px 122px, auto, auto;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+    }
+
+    .scene {
+      width: min(100%, 960px);
+      min-height: 100vh;
+      padding: 48px 20px 42px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .intro { text-align: center; animation: rise .8s ease both; }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #d7b879;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; color: #fff8ed; font-family: Georgia, "Songti SC", serif; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 400; letter-spacing: .02em; text-shadow: 0 3px 18px rgba(0,0,0,.25); }
+    .hint { margin: 12px 0 0; color: var(--muted); font-size: .95rem; }
+
+    .letter-stage {
+      position: relative;
+      width: min(100%, 560px);
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+      perspective: 1200px;
+    }
+
+    .envelope-wrap { position: relative; width: min(84vw, 440px); aspect-ratio: 1.55 / 1; transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+    .envelope-wrap.opened { transform: translateY(86px); }
+    .envelope {
+      position: absolute; inset: 0;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #f2eadc, #d8c6ad);
+      border: 1px solid rgba(196,154,85,.58);
+      box-shadow: 0 28px 64px rgba(0,0,0,.34), inset 0 1px rgba(255,255,255,.85);
+      transform-style: preserve-3d;
+      cursor: pointer;
+      transition: box-shadow .3s ease;
+    }
+    .envelope:hover { box-shadow: 0 34px 72px rgba(0,0,0,.42), 0 0 0 1px rgba(215,184,121,.35), inset 0 1px rgba(255,255,255,.85); transform: translateY(-4px); }
+    .envelope:focus-visible { outline: 3px solid #fff; outline-offset: 6px; }
+    .envelope::before, .envelope::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+    .envelope::before { clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%); background: linear-gradient(135deg, #eee4d4, #d3bfa3); border-radius: inherit; }
+    .envelope::after { clip-path: polygon(0 100%, 34% 48%, 50% 62%, 66% 48%, 100% 100%); background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(145,111,80,.18)); border-radius: inherit; }
+
+    .flap {
+      position: absolute; inset: 0 0 auto;
+      height: 62%;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      background: linear-gradient(155deg, #fff9ec, #d7c2a5);
+      transform-origin: top center;
+      transition: transform .85s cubic-bezier(.2,.8,.2,1), z-index 0s linear .4s;
+      z-index: 4;
+      filter: drop-shadow(0 3px 2px rgba(92, 39, 62, .12));
+    }
+    .seal {
+      position: absolute; left: 50%; top: 47%; z-index: 7;
+      width: 58px; height: 58px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: radial-gradient(circle at 35% 28%, #d8758e, #772d4a 72%);
+      color: #f4d89b;
+      font-family: Georgia, serif;
+      font-size: 1.35rem;
+      border: 2px solid rgba(244,216,155,.55);
+      box-shadow: 0 7px 16px rgba(64, 26, 42, .38), inset 0 0 0 3px rgba(255,255,255,.08);
+      transition: opacity .3s ease, transform .4s ease;
+    }
+    .paper {
+      position: absolute; left: 8%; right: 8%; bottom: 4%; z-index: 2;
+      height: 410px;
+      padding: 34px 30px 28px;
+      background: var(--paper);
+      box-shadow: 0 14px 28px rgba(91, 44, 65, .16);
+      transform: translateY(8%) scale(.94);
+      transform-origin: bottom center;
+      opacity: 0;
+      transition: transform .9s cubic-bezier(.2,.8,.2,1) .22s, opacity .55s ease .22s;
+      overflow: auto;
+      scrollbar-color: rgba(126,50,79,.35) transparent;
+    }
+    .paper::before { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(190, 102, 127, .28); pointer-events: none; }
+    .paper-content { position: relative; z-index: 1; font-family: Georgia, "Songti SC", serif; line-height: 1.9; }
+    .paper h2 { margin: 0 0 16px; font-size: 1.45rem; font-weight: 400; color: var(--wine); }
+    .paper h3 { margin: 20px 0 8px; color: var(--wine); font-size: 1.02rem; font-weight: 700; }
+    .paper p { margin: 0 0 12px; font-size: .97rem; }
+    .spread { margin: 0 0 8px; color: #6e5260; font-size: .92rem; }
+    .advice { margin: 6px 0 0; padding-left: 1.3rem; }
+    .advice li { margin: 7px 0; padding-left: .2rem; }
+    .signature { margin-top: 22px !important; text-align: right; color: var(--wine); }
+
+    .opened .flap { transform: rotateX(180deg); z-index: 1; }
+    .opened .seal { opacity: 0; transform: translate(-50%, -50%) scale(.6); pointer-events: none; }
+    .opened .paper { transform: translateY(-47%) scale(1); opacity: 1; }
+
+    .action { border: 1px solid rgba(215,184,121,.5); background: rgba(255,250,240,.1); color: #fff4df; padding: 11px 19px; border-radius: 999px; font: inherit; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,.12); transition: background .2s, transform .2s; }
+    .action:hover { background: rgba(255,250,240,.18); transform: translateY(-2px); }
+    .action:focus-visible { outline: 3px solid var(--rose-dark); outline-offset: 3px; }
+    .footer { color: var(--muted); font-size: .8rem; opacity: .85; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 560px) {
+      .scene { padding-top: 30px; gap: 12px; }
+      .letter-stage { min-height: 410px; }
+      .paper { height: 350px; padding: 28px 24px 22px; }
+      .paper h2 { font-size: 1.25rem; }
+      .paper p { font-size: .92rem; }
+      .opened .paper { transform: translateY(-42%) scale(1); }
+      .envelope-wrap.opened { transform: translateY(65px); }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   </style>
 </head>
 <body>
-  <main class="page">
-    <div class="glow"></div>
-    <div class="leaf l1">❧</div><div class="leaf l2">☘</div><div class="leaf l3">❧</div><div class="leaf l4">☘</div>
-    <section class="content">
-      <div class="brand">桔彤塔罗</div>
+  <main class="scene">
+    <header class="intro">
+      <p class="eyebrow">Your reading</p>
       <h1>给你的一封信</h1>
-      <div class="sub">有些答案 · 值得慢慢打开</div>
-      <div class="envelope-wrap" id="envelope" role="button" aria-label="点击打开信封" tabindex="0">
-        <div class="envelope">
-          <div class="back"></div>
-          <div class="paper"><div class="seal-text">桔彤</div><p>有些事情，<br>不是没有答案。<br>只是你一直不敢面对<br>那个真正的答案。</p></div>
-          <div class="front"></div>
+      <p class="hint" id="hint">点击信封，查看本次解读</p>
+    </header>
+
+    <section class="letter-stage" aria-label="互动信封">
+      <div class="envelope-wrap" id="envelopeWrap">
+        <article class="paper" aria-hidden="true" id="paper">
+          <div class="paper-content">
+            <h2>感情整体方向以及趋势</h2>
+            <p class="spread"><strong>切牌：</strong>逆位圣杯骑士</p>
+            <p class="spread"><strong>时间流：</strong>正位恋人 + 正位权杖四 + 逆位宝剑国王</p>
+            <h3>综合分析</h3>
+            <p>结合背景与牌面：综合分析这段关系后续趋势偏向于比较糟糕。两人之间的意见或者规划方面出现偏差，造成关系不太和谐，相处不舒服。</p>
+            <p>同时，对于这段感情关系的维系不太有动力。两人之间的感情流动少，感情不太甜蜜以及浓厚，关系比较淡。</p>
+            <h3>建议</h3>
+            <ol class="advice">
+              <li>调整情绪，不要让自己一直猜测内耗，不做无用功。</li>
+              <li>见面可以试试男生对于关系的态度，有机会可以查查手机。</li>
+              <li>专注自己，不要把所有时间放在感情中，提升自己最重要。</li>
+            </ol>
+            <p class="signature">本次咨询总结大概就这样啦，<br />希望能给你带来帮助 ♡ ♡</p>
+          </div>
+        </article>
+        <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="打开信封" aria-pressed="false">
           <div class="flap"></div>
-          <div class="seal">J·T</div>
+          <div class="seal" aria-hidden="true">♡</div>
         </div>
-        <div class="hint">点击信封 · 打开属于你的答案</div>
-      </div>
-      <div class="after">
-        <div class="after-title">愿你看见真实的自己</div>
-        <div class="after-desc">塔罗不是替你决定，而是帮你看清。</div>
-        <div class="button" id="again">重新打开</div>
       </div>
     </section>
-    <div class="footer">J·T TAROT · FOLLOW YOUR INNER VOICE</div>
+
+    <button class="action" type="button" id="action">打开信封</button>
+    <div class="footer">把这份心意，分享给特别的人</div>
   </main>
+
   <script>
-    const wrap=document.getElementById('envelope');
-    const again=document.getElementById('again');
-    function toggle(){wrap.classList.toggle('opened')}
-    wrap.addEventListener('click',toggle);
-    wrap.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
-    again.addEventListener('click',e=>{e.stopPropagation();wrap.classList.remove('opened');window.scrollTo({top:0,behavior:'smooth'})});
+    const envelopeWrap = document.getElementById('envelopeWrap');
+    const envelope = document.getElementById('envelope');
+    const paper = document.getElementById('paper');
+    const action = document.getElementById('action');
+    const hint = document.getElementById('hint');
+    let opened = false;
+
+    function toggleEnvelope() {
+      opened = !opened;
+      envelopeWrap.classList.toggle('opened', opened);
+      envelope.setAttribute('aria-pressed', String(opened));
+      envelope.setAttribute('aria-label', opened ? '合上信封' : '打开信封');
+      paper.setAttribute('aria-hidden', String(!opened));
+      action.textContent = opened ? '合上信封' : '打开信封';
+      hint.textContent = opened ? '向下滑动信纸，阅读完整内容' : '点击信封，查看本次解读';
+    }
+
+    envelope.addEventListener('click', toggleEnvelope);
+    envelope.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleEnvelope(); }
+    });
+    action.addEventListener('click', toggleEnvelope);
   </script>
 </body>
 </html>
